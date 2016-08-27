@@ -17,3 +17,9 @@ Other icon possibilities:
 * http://www.freepik.com/free-vector/tree-icons-collection_799499.htm
 * http://www.freepik.com/free-vector/tree-icons-pack_813723.htm
 * https://www.vectorstock.com/royalty-free-vector/trees-forest-park-green-icons-set-vector-2006768 and https://www.vectorstock.com/royalty-free-vector/pine-tree-park-green-icons-set-vector-1998488
+
+## Tree palette:
+* #658744 (dark)
+* #9FBF62 (light)
+* #B9C33E (yellowish)
+* #93C281 (blueish)

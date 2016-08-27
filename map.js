@@ -36,7 +36,7 @@ var map = new mapboxgl.Map({
   center: [-84.3931875,33.7753208],
   pitch: 45, // pitch in degrees
   // bearing: 0, // bearing in degrees
-  zoom: 17
+  zoom: 15 // TODO: change to 17
 });
 
 var nav = new mapboxgl.Navigation({position: 'top-left'}); // position is optional
@@ -51,7 +51,8 @@ var geojson = {
       "type": "Feature",
       "properties": {
         "message": "Crepe Myrtle",
-        "iconSize": [60, 60]
+        "iconSize": [60, 60],
+        "icon": "big-plant-like-a-small-tree.svg"
       },
       "geometry": {
         "type": "Point",
@@ -65,7 +66,8 @@ var geojson = {
       "type": "Feature",
       "properties": {
         "message": "Overcup Oak",
-        "iconSize": [50, 50]
+        "iconSize": [50, 50],
+        "icon": "tree-black-silhouette-shape.svg"
       },
       "geometry": {
         "type": "Point",
@@ -79,7 +81,8 @@ var geojson = {
       "type": "Feature",
       "properties": {
         "message": "White Oak",
-        "iconSize": [40, 40]
+        "iconSize": [40, 40],
+        "icon": "tree-black-silhouette-shape.svg"
       },
       "geometry": {
         "type": "Point",
@@ -97,7 +100,9 @@ geojson.features.forEach(function(marker) {
   // create a DOM element for the marker
   var el = document.createElement('div');
   el.className = 'marker';
-  el.style.backgroundImage = 'url("https://mapsandapps.github.io/arboreta/icons/romantic-tree-shape-with-heart-shaped-leaves.svg")';
+  el.style.backgroundImage = 'url("icons/' + marker.properties.icon + '")';
+  el.style.backgroundSize = 'cover';
+  el.style.fill = '#9FBF62';
   el.style.width = marker.properties.iconSize[0] + 'px';
   el.style.height = marker.properties.iconSize[1] + 'px';
 
