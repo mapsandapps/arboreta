@@ -43,3 +43,70 @@ var nav = new mapboxgl.Navigation({position: 'top-left'}); // position is option
 map.addControl(nav);
 
 window.onload = geoFindMe;
+
+var geojson = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "message": "Crepe Myrtle",
+        "iconSize": [60, 60]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4003,
+          33.7775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "message": "Overcup Oak",
+        "iconSize": [50, 50]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4006,
+          33.7761
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "message": "White Oak",
+        "iconSize": [40, 40]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.3947,
+          33.7722
+        ]
+      }
+    }
+  ]
+};
+
+// add markers to map
+geojson.features.forEach(function(marker) {
+  // create a DOM element for the marker
+  var el = document.createElement('div');
+  el.className = 'marker';
+  el.style.backgroundImage = 'url("https://mapsandapps.github.io/arboreta/icons/romantic-tree-shape-with-heart-shaped-leaves.svg")';
+  el.style.width = marker.properties.iconSize[0] + 'px';
+  el.style.height = marker.properties.iconSize[1] + 'px';
+
+  el.addEventListener('click', function() {
+    window.alert(marker.properties.message);
+  });
+
+  // add marker to map
+  new mapboxgl.Marker(el, {offset: [-marker.properties.iconSize[0] / 2, -marker.properties.iconSize[1] / 2]})
+    .setLngLat(marker.geometry.coordinates)
+    .addTo(map);
+});
