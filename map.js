@@ -7,7 +7,7 @@ var geo_options = {
 };
 
 function geoFindMe() {
-  var output = document.getElementById("out");
+  console.log('geolocation init');
 
   if (!navigator.geolocation){
     // output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
@@ -15,12 +15,28 @@ function geoFindMe() {
   }
 
   function success(position) {
+    console.log('geolocation success');
     var lat  = position.coords.latitude;
     var lng = position.coords.longitude;
    
     map.panTo([lng, lat]);
 
+    // TODO: remove before drawing
+    // remove .person-marker
     // TODO: draw person at [lng, lat]
+    if (document.querySelectorAll(".person-marker").length > 0) {
+      var existingPersonMarker = document.querySelectorAll(".person-marker")[0];
+      existingPersonMarker.parentNode.removeChild(existingPersonMarker);
+    }
+    var person = document.createElement('div');
+    person.className = 'person-marker';
+    person.style.width = '40px';
+    person.style.height = '40px';
+    person.style.backgroundImage = 'url("icons/stick-man-walking.svg")';
+    person.style.backgroundSize = 'cover';
+    new mapboxgl.Marker(person, {offset: [-20, -20]})
+      .setLngLat([lng, lat])
+      .addTo(map);
   };
 
   function error() {
@@ -42,76 +58,7 @@ var map = new mapboxgl.Map({
 var nav = new mapboxgl.Navigation({position: 'top-left'}); // position is optional
 map.addControl(nav);
 
-window.onload = geoFindMe;
+console.log('map loaded');
 
-var geojson = {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {
-        "message": "Crepe Myrtle",
-        "iconSize": [60, 60],
-        "icon": "big-plant-like-a-small-tree.svg"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -84.4003,
-          33.7775
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "message": "Overcup Oak",
-        "iconSize": [50, 50],
-        "icon": "tree-black-silhouette-shape.svg"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -84.4006,
-          33.7761
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "message": "White Oak",
-        "iconSize": [40, 40],
-        "icon": "tree-black-silhouette-shape.svg"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -84.3947,
-          33.7722
-        ]
-      }
-    }
-  ]
-};
-
-// add markers to map
-geojson.features.forEach(function(marker) {
-  // create a DOM element for the marker
-  var el = document.createElement('div');
-  el.className = 'marker';
-  el.style.backgroundImage = 'url("icons/' + marker.properties.icon + '")';
-  el.style.backgroundSize = 'cover';
-  el.style.fill = '#9FBF62';
-  el.style.width = marker.properties.iconSize[0] + 'px';
-  el.style.height = marker.properties.iconSize[1] + 'px';
-
-  el.addEventListener('click', function() {
-    window.alert(marker.properties.message);
-  });
-
-  // add marker to map
-  new mapboxgl.Marker(el, {offset: [-marker.properties.iconSize[0] / 2, -marker.properties.iconSize[1] / 2]})
-    .setLngLat(marker.geometry.coordinates)
-    .addTo(map);
-});
+// window.onload = geoFindMe;
+geoFindMe();
