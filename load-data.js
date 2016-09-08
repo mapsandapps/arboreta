@@ -42,7 +42,7 @@ function addTreeToMap(tree) {
 
   var el = document.createElement('div');
   el.className = 'marker';
-  var icon = tree.icon === '' || typeof(tree.icon) === 'undefined' ? 'pine-tree' : tree.icon;
+  var icon = tree.icon === '' || typeof(tree.icon) === 'undefined' ? 'pine-tree.svg' : tree.icon;
   el.style.backgroundImage = 'url("icons/' + icon + '")';
   el.style.backgroundSize = 'cover';
   el.style.fill = '#9FBF62';
