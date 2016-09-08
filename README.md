@@ -10,7 +10,8 @@ compass from [ariya](https://github.com/ariya/ariya.github.com), MIT licensed
 
 ## Credits
 
-* Icons made by [freepik](http://www.flaticon.com/authors/freepik) from [www.flaticon.com](www.flaticon.com) 
+* Tree icons made by [freepik](http://www.flaticon.com/authors/freepik) from [www.flaticon.com](www.flaticon.com)
+* Alert icon from [Ionicons](https://github.com/driftyco/ionicons)
 
 
 Other icon possibilities:
