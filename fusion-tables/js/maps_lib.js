@@ -164,12 +164,12 @@
         
         //-----custom filters-----
         var common_name_search = $("#search-common-name").val().replace("'", "\\'");
-        if (common_name_search != '')
-        self.whereClause += " AND 'COMMONNAME' contains ignoring case '" + common_name_search + "'";
-
         var botanical_name_search = $("#search-botanical-name").val().replace("'", "\\'");
-        if (botanical_name_search != '')
-        self.whereClause += " AND 'BOTANICAL' contains ignoring case '" + botanical_name_search + "'";
+        if (common_name_search != '') {
+            self.whereClause += " 'COMMONNAME' contains ignoring case '" + common_name_search + "'";
+        } else if (botanical_name_search != '') {
+            self.whereClause += " 'BOTANICAL' contains ignoring case '" + botanical_name_search + "'";
+        }
         //-----end of custom filters-----
 
         // self.getgeoCondition(address, function (geoCondition) {
