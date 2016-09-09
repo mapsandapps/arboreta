@@ -166,9 +166,9 @@
         var common_name_search = $("#search-common-name").val().replace("'", "\\'");
         var botanical_name_search = $("#search-botanical-name").val().replace("'", "\\'");
         if (common_name_search != '') {
-            self.whereClause += " 'COMMONNAME' contains ignoring case '" + common_name_search + "'";
+            self.whereClause = " 'COMMONNAME' contains ignoring case '" + common_name_search + "'";
         } else if (botanical_name_search != '') {
-            self.whereClause += " 'BOTANICAL' contains ignoring case '" + botanical_name_search + "'";
+            self.whereClause = " 'BOTANICAL' contains ignoring case '" + botanical_name_search + "'";
         }
         //-----end of custom filters-----
 
