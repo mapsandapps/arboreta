@@ -177,6 +177,8 @@
         //     self.submitSearch(self.whereClause, self.map);
         // });
         self.submitSearch(self.whereClause, self.map);
+        $("#search-common-name").val('');
+        $("#search-botanical-name").val('');
 
     };
 
