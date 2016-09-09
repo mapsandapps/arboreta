@@ -158,9 +158,9 @@
     MapsLib.prototype.doSearch = function () {
         var self = this;
         self.clearSearch();
-        var address = $("#search_address").val();
-        self.searchRadius = $("#search_radius").val();
-        self.whereClause = self.locationColumn + " not equal to ''";
+        // var address = $("#search_address").val();
+        // self.searchRadius = $("#search_radius").val();
+        // self.whereClause = self.locationColumn + " not equal to ''";
         
         //-----custom filters-----
         var common_name_search = $("#search-common-name").val().replace("'", "\\'");
@@ -172,10 +172,11 @@
         self.whereClause += " AND 'BOTANICAL' contains ignoring case '" + botanical_name_search + "'";
         //-----end of custom filters-----
 
-        self.getgeoCondition(address, function (geoCondition) {
-            self.whereClause += geoCondition;
-            self.submitSearch(self.whereClause, self.map);
-        });
+        // self.getgeoCondition(address, function (geoCondition) {
+        //     self.whereClause += geoCondition;
+        //     self.submitSearch(self.whereClause, self.map);
+        // });
+        self.submitSearch(self.whereClause, self.map);
 
     };
 
