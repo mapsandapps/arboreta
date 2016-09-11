@@ -51,7 +51,7 @@ function addTreeToMap(tree) {
 
   el.addEventListener('click', function() {
     console.log(tree['Common name']);
-    document.getElementById('tree-info').innerHTML = '<span class="tree-name">' + tree['Common name'] + '</span>';
+    document.getElementById('tree-info').innerHTML = '<span class="tree-name">'+ tree['Number'] + ': ' + tree['Common name'] + '</span>';
   });
 
   new mapboxgl.Marker(el, {offset: [-20, -20]})
